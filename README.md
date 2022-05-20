@@ -16,4 +16,8 @@
 <p> CSS </p>
 <p> fontAwsome for icons </p>
 
+## How can you run this project
+<p> Step 1 : Install this repo in your local machine. </p>
+<p> Step 2 : do npm install to install all dependencies. </p>
+<p> step 3 : npm run dev to run on your local machine. </p>
 
