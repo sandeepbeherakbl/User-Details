@@ -21,3 +21,5 @@
 <p> Step 2 : do npm install to install all dependencies. </p>
 <p> step 3 : npm run dev to run on your local machine. </p>
 
+## Deploy link
+https://skbuserslist.netlify.app/
