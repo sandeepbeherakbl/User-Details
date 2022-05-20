@@ -6,7 +6,7 @@
 <p> -Searching Functionality with name and emailID </p>
 <p> -Pagination </p>
 
-### About the project
+## About the project
 <p> 
   Fetching the data of users from the api. The data contains IDno, Name, Email, Gender & Status of the user. All the data are displayed in the tabular form and if you want you can sort it with the help of id, name & email. It also contain a search functionality where you can search about a particular user with reference to his/her name or email id.
 </p>
