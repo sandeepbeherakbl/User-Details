@@ -1,0 +1,58 @@
+.head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form {
+    float: right;
+    padding: 20px 0;
+}
+
+input {
+    margin-top:10px;
+    float: left;
+    width: 200px;
+    outline: none;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.btnRef{
+    float: left;
+    background: none;
+    border: none;
+    font-size: 12px;
+    margin-left: 2px;
+    padding: 3px 5px;
+    color: rgb(187, 187, 187);
+    border: 1px solid black;
+}
+table {
+    width: 100%;
+    text-align: left;
+}
+
+th {
+    background-color: rgb(179, 179, 179);
+    height: 30px;
+    border: 0px;
+    border-collapse: collapse;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+tr td {
+    border-bottom: 1px solid black;
+    padding: 10px 20px;
+}
+
+.nodata td {
+    border-bottom: none;
+}
+
+.sort {
+    width: 20px;
+    color: rgb(59, 59, 59);
+}
