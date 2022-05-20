@@ -10,7 +10,7 @@ export const Data = () => {
     const [searchApiData, setSearchApiData] = useState([]);
     const [pageNumber, setPageNumber] = useState(0);
 
-
+    // pagination
     const usersPerPage = 6;
     const pagesVisited = pageNumber * usersPerPage;
     const pageCount = Math.ceil(data.length / usersPerPage);
@@ -18,6 +18,7 @@ export const Data = () => {
         setPageNumber(selected);
     };
 
+    //Fetching Data From API
     const fetchData = async () => {
         let user = await fetch("https://gorest.co.in/public/v2/users")
         let d = await user.json()
@@ -30,7 +31,7 @@ export const Data = () => {
     }, [])
 
 
-
+    //Seaarch Filter
     const handleFilter = (e) => {
         if (e.target.value == '') {
             setData(searchApiData)
@@ -49,6 +50,7 @@ export const Data = () => {
         setFilterVal(e.target.value)
     }
 
+    // Sort by ID
     const handleSortId = () => {
         const sortID = data.sort((a, b) => {
             if (a.id > b.id) {
@@ -59,9 +61,9 @@ export const Data = () => {
             return 0;
         })
         setData([...sortID]);
-        // console.log(sortID)
     }
 
+    // Sort by Name
     const handleSortname = () => {
         const sortname = data.sort((a, b) => {
             if (a.name > b.name) {
@@ -72,9 +74,9 @@ export const Data = () => {
             return 0;
         })
         setData([...sortname]);
-        // console.log(sortID)
     }
 
+    // Sort by Email
     const handleSortemail = () => {
         const sortemail = data.sort((a, b) => {
             if (a.email > b.email) {
@@ -85,7 +87,6 @@ export const Data = () => {
             return 0;
         })
         setData([...sortemail]);
-        // console.log(sortID)
     }
 
 
