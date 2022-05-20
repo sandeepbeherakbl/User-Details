@@ -48,6 +48,16 @@ tr td {
     padding: 10px 20px;
 }
 
+tr{
+    transition: all .2s ease-in;
+    cursor: pointer;
+}
+
+tr:hover{
+    background-color: aliceblue;
+    transform: scale(1.02);
+}
+
 .nodata td {
     border-bottom: none;
 }
@@ -56,3 +66,54 @@ tr td {
     width: 20px;
     color: rgb(59, 59, 59);
 }
+
+.green{
+    background-color: rgb(160, 255, 160);
+    border: 1px solid green;
+    border-radius: 5px;
+}
+
+.red{
+    background-color: rgb(255, 152, 152);
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.paginationBttns{
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    color: #000000;
+   }
+   .paginationBttns a{
+       padding: 0 6px;
+       margin: 8px;
+       background: #1a66ff;
+       color: #ffffff;
+       text-decoration: none;
+       font-size: 15px;
+       cursor: pointer;
+   }
+   .paginationBttns a:hover{
+       color: #000000;
+       background: white;
+       border: 1px solid #1a66ff;
+   }
+   .paginationActive a {
+       color: #000000;
+       border: 1px solid #1a66ff;
+       background: white;
+   }
+
+   .disIcon {
+       color: #313131;
+       padding: 0px 5px;
+   }
+
+@media only screen and (max-width:768px){
+    table{
+        width: 90%;
+    }
+    
+}
+   

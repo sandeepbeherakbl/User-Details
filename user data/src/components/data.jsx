@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSort, faRefresh } from '@fortawesome/free-solid-svg-icons'
+import { faSort, faMale, faFemale, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import "./data.css"
 import { useEffect, useState } from 'react'
 import ReactPaginate from "react-paginate";
@@ -8,9 +8,18 @@ export const Data = () => {
     const [data, setData] = useState([]);
     const [filterVal, setFilterVal] = useState('')
     const [searchApiData, setSearchApiData] = useState([]);
-    
+    const [pageNumber, setPageNumber] = useState(0);
+
+
+    const usersPerPage = 6;
+    const pagesVisited = pageNumber * usersPerPage;
+    const pageCount = Math.ceil(data.length / usersPerPage);
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    };
+
     const fetchData = async () => {
-        let user = await fetch("https://gorest.co.in/public/v2/users?_start=0&_end=6")
+        let user = await fetch("https://gorest.co.in/public/v2/users")
         let d = await user.json()
         setData(d)
         setSearchApiData(d)
@@ -20,7 +29,7 @@ export const Data = () => {
         fetchData();
     }, [])
 
-    
+
 
     const handleFilter = (e) => {
         if (e.target.value == '') {
@@ -29,7 +38,8 @@ export const Data = () => {
             const filterResult = searchApiData.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()) || item.email.toLowerCase().includes(e.target.value.toLowerCase()))
             if (filterResult.length > 0) {
                 setData(filterResult)
-            } else {
+            }
+            else {
                 setData([{
                     "id": "No User Found"
                 }])
@@ -116,21 +126,38 @@ export const Data = () => {
                     <th>Gender</th>
                     <th>Status</th>
                     {
-                        data.map((item, index) => {
-                            return (
-                                <tr key={index}>
-                                    <td>{item.id}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.email}</td>
-                                    <td>{item.gender}</td>
-                                    <td>{item.status}</td>
-                                </tr>
-                            )
-                        })
+                        data.slice(pagesVisited, pagesVisited + usersPerPage)
+                            .map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{item.id}</td>
+                                        <td>{item.name}</td>
+                                        <td>
+                                            <FontAwesomeIcon className='disIcon' icon={faEnvelope} />
+                                            {item.email}</td>
+                                        <td>
+                                            <FontAwesomeIcon className='disIcon' icon={item.gender == "male" ? faMale : faFemale} />
+                                            {item.gender}</td>
+                                        <td
+                                            className={item.status == "active" ? "green" : "red"}
+                                        >{item.status}</td>
+                                    </tr>
+                                )
+                            })
                     }
                 </table>
+                <div className="page-flex">
+                    <ReactPaginate
+                        previousLabel={"Prev"}
+                        nextLabel={"Next"}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={"paginationBttns"}
+                        disabledClassName={"paginationDisabled"}
+                        activeClassName={"paginationActive"}
+                    />
+                </div>
             </div>
-
         </>
     )
 }
